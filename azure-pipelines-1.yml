@@ -20,6 +20,12 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+    
+- script: |
+    echo "Source directory: $(Build.SourcesDirectory)"
+    echo "Target directory: $(Build.ArtifactStagingDirectory)"
+  displayName: 'Debug paths'
+
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(agent.builddirectory)/target'
